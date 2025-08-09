@@ -1,4 +1,8 @@
-import app from '@/app'
+import app from "@/app";
+import connectDB from "@/connection";
+
+// creating the connection with DB
+connectDB();
 
 const PORT = 8000;
 app.listen(PORT, (error: Error | undefined) => {

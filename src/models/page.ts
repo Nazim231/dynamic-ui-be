@@ -1,24 +1,25 @@
-import { Model, Schema } from "mongoose";
+import { TPage } from "@custom-types/page";
+import mongoose, { Model, Schema } from "mongoose";
 
-const pageSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    slug: {
-        type: String,
-        required: true,
-        unique: true,
-    },
-    allowedRoles: {
-        type: [String],
-        default: []
-    },
-    exceptRoles: {
-        type: [String],
-        default: []
-    }
-})
+const pageSchema: Schema<TPage> = new Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  slug: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  allowedRoles: {
+    type: [String],
+    default: [],
+  },
+  exceptRoles: {
+    type: [String],
+    default: [],
+  },
+});
 
-export const Page = new Model('pages', pageSchema)
+export const Page: Model<TPage> = mongoose.model<TPage>("pages", pageSchema);

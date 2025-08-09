@@ -1,10 +1,12 @@
 import express from "express";
-import connectDB from "./connection";
+import routes from "@routes/index";
 
 const app = express();
 
-// creating the connection with DB
-connectDB();
+// middlewares
+app.use(express.json())
 
-// routes
+// registering routes
+app.use(routes);
+
 export default app;

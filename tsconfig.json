@@ -7,7 +7,10 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["*"],
-      "@custom-types/*": ["types/*"]
+      "@custom-types/*": ["types/*"],
+      "@models/*": ["models/*"],
+      "@controllers/*": ["controllers/*"],
+      "@routes/*": ["routes/*"],
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

@@ -1,20 +1,8 @@
-type Rules = {
-  required?: boolean;
-  min?: number;
-  max?: number;
-  eq?: string | number;
-  nteq?: string | number;
-};
+import { ValidationRules, ValidationResult, Rules } from "@custom-types/validation";
 
-type ValidationRules<T> = Record<keyof T, Rules>;
-
-type ValidationResult =
-  | { success: true }
-  | { success: false; errors: Record<string, string> };
-
-export function validate<ValidationData>(
+export function validate<ValidationData extends Record<string, any>>(
   data: ValidationData,
-  dataRules: ValidationRules<ValidationData>
+  dataRules: ValidationRules<Partial<ValidationData>>
 ): ValidationResult {
   // storing validation message
   const validationErrors: Record<string, string> = {};
