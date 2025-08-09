@@ -1,6 +1,4 @@
-import express from "express";
-
-const app = express();
+import app from '@/app'
 
 const PORT = 8000;
 app.listen(PORT, (error: Error | undefined) => {
@@ -8,7 +6,6 @@ app.listen(PORT, (error: Error | undefined) => {
     console.log("Failed to start API on PORT: %d, Closing API", PORT);
     console.error(error.message);
     process.exit(2);
-    return;
   }
   console.log("API Listening on PORT: %d", PORT);
 });
