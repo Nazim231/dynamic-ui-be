@@ -19,9 +19,10 @@ class PageController {
     const validation = validate<TPage>(body, VALIDATION_RULES.Page);
 
     if (!validation.success) {
-      return res
-        .status(422)
-        .json({ message: "Validation Failed", error: validation.errors });
+      return res.status(422).json({
+        message: "Validation Failed",
+        validationErrors: validation.errors,
+      });
     }
 
     try {
@@ -31,6 +32,17 @@ class PageController {
       return res
         .status(400)
         .json({ message: "Page creation failed", error: error.message });
+    }
+  }
+
+  async get(req: Request, res: Response) {
+    try {
+      const pages = await Page.find({}, { name: 1, slug: 1 });
+      return res.json({ message: "Pages fetched", data: pages });
+    } catch (error: any) {
+      return res
+        .status(400)
+        .json({ message: "Page fetch failed", error: error.message });
     }
   }
 }
